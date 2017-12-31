@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <name>demo</name>
+    <groupId>com.huawei.hilink.demo</groupId>
+    <artifactId>demo</artifactId>
+    <version>1.0.0</version>
+    <packaging>bundle</packaging>
+    <description>demo</description>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>2.0.1</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
+                    <instructions>
+                        <bundleName>{project.name}</bundleName>
+                        <bundleDescription>{project.description}</bundleDescription>
+                        <bundleVendor>HUAWEI</bundleVendor>
+                        <Bundle-Activator>com.huawei.hilink.demo.Activator</Bundle-Activator>
+                        <Service-Component>OSGI-INF/Activator.xml,OSGI-INF/DemoServices.xml</Service-Component>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+	<!--下面所依赖的库版本version根据实际提供的OpenEESDK中的版本来填写-->
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.main</artifactId>
+            <version>5.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.huawei.hilink</groupId>
+            <artifactId>com.huawei.hilink.openapi</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+
+</project>

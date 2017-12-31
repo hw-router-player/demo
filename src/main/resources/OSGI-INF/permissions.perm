@@ -1,0 +1,32 @@
+#包权限声明，固定为*
+(org.osgi.framework.PackagePermission "*" "import")
+#注册服务权限声明，即声明实现哪些服务接口
+(org.osgi.framework.ServicePermission "com.huawei.hilink.event.EventSubscriber" "register")
+(org.osgi.framework.ServicePermission "com.huawei.hilink.openapi.plugin.PluginListener" "register")
+#获取服务权限声明
+(org.osgi.framework.ServicePermission "com.huawei.hilink.openapi.system.SystemInfo" "get")
+(org.osgi.framework.ServicePermission "com.huawei.hilink.openapi.usbstorage.USBStorage" "get")
+(org.osgi.framework.ServicePermission "com.huawei.hilink.openapi.nativelauncher.NativeLauncher" "get")
+(org.osgi.framework.ServicePermission "com.huawei.hilink.openapi.rest.Restful" "get")
+(org.osgi.framework.ServicePermission "com.huawei.hilink.openapi.device.HiLinkDeviceMngr" "get")
+#系统信息权限声明，比如声明获取host信息，获取wan信息等
+(com.huawei.hilink.coreapi.perm.SystemInfoPermission "*" "dev,host,wlan,wan,bandwidth,lnhst")
+#设备管理权限声明，比如获取设备列表，获取设备数据，设备数据变化订阅
+(com.huawei.hilink.coreapi.perm.DevAdminByDevTypePermission "devType1,devType2,devType3" "get,control,observe")
+(com.huawei.hilink.coreapi.perm.DevAdminBySerTypePermission "serType1,serType2,serType3" "get,control,observe")
+#获取USB信息
+(com.huawei.hilink.coreapi.perm.USBPermission "*" "list")
+#Native进程访问usb权限声明
+(com.huawei.hilink.coreapi.perm.NativePermission "*" "usb")
+#Restful接口权限声明
+(com.huawei.hilink.coreapi.perm.RESTPermission "/xxx1/xxx1" "get")
+(com.huawei.hilink.coreapi.perm.RESTPermission "/xxx2/xxx2" "post")
+#Native 库加载权限声明
+(java.lang.RuntimePermission "loadLibrary.*")
+#Logger日志权限
+(java.util.logging.LoggingPermission "control")
+#socket权限声明
+(java.net.SocketPermission "localhost:8888" "connect,resolve,accept,listen")
+#文件访问权限声明
+(java.io.FilePermission "/xxx/msg.txt" "read,write,delete")
+#还有其他的java原生权限可声明，在调试过程中注意telnet打印提示的权限禁止异常，根据异常打印提示来添加

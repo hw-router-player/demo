@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0"
+    immediate="true"
+    name="com.huawei.hilink.demo.DemoServices">
+    <implementation
+        class="com.huawei.hilink.demo.DemoServices" />
+    <!--声明实现EventSubscriber服务接口-->
+    <service>
+        <provide interface="com.huawei.hilink.event.EventSubscriber" />
+    </service>
+    <!--声明获取SystemInfo服务-->
+    <reference bind="setSystemInfo" cardinality="1..1"
+        interface="com.huawei.hilink.openapi.system.SystemInfo" name="SystemInfo"
+        policy="dynamic" unbind="unsetSystemInfo" />
+    <!--声明获取USBStorage服务-->
+    <reference bind="setUSBStorage" cardinality="1..1"
+        interface="com.huawei.hilink.openapi.usbstorage.USBStorage" name="USBStorage"
+        policy="dynamic" unbind="unsetUSBStorage" />
+    <!--声明获取NativeLauncher服务-->
+    <reference bind="setNativeLauncher" cardinality="1..1"
+        interface="com.huawei.hilink.openapi.nativelauncher.NativeLauncher" name="NativeLauncher"
+        policy="dynamic" unbind="unsetNativeLauncher" />
+    <!--声明获取Restful服务-->
+    <reference bind="setRestful" cardinality="1..1"
+        interface="com.huawei.hilink.openapi.rest.Restful" name="Restful"
+        policy="dynamic" unbind="unsetRestful" />
+    <!--声明获取HiLinkDeviceMngr服务-->
+    <reference bind="setHiLinkDeviceMngr" cardinality="1..1"
+        interface="com.huawei.hilink.openapi.device.HiLinkDeviceMngr" name="HiLinkDeviceMngr"
+        policy="dynamic" unbind="unsetHiLinkDeviceMngr" />  
+</scr:component>
